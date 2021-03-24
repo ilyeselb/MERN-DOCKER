@@ -3,23 +3,23 @@ services :
   -docker
 
 before_install : 
-      - docker build -t ilyes/testclient -f ./client/Dockerfile.dev ./client
+      - docker build -t ilyeselayeb/testclient -f ./client/Dockerfile.dev ./client
 
 script:
-      - docker run ilyes/testclient npm test -- --coverage
+      - docker run ilyeselayeb/testclient npm test -- --coverage
     
 after_sucees: 
-      - docker build -t ilyes/client -f ./client
-      - docker build -t ilyes/nginx -f ./nginx
-      - docker build -t ilyes/server -f ./server
-      - docker build -t ilyes/worker -f ./worker
+      - docker build -t ilyeselayeb/client -f ./client
+      - docker build -t ilyeselayeb/nginx -f ./nginx
+      - docker build -t ilyeselayeb/server -f ./server
+      - docker build -t ilyeselayeb/worker -f ./worker
  
       - echo "$DOCKER_PASSWORD" | login -u "$DOCKER_ID" --passord-stdin
 
-      - docker push   ilyes/client
-      - docker push   ilyes/nginx
-      - docker push   ilyes/server
-      - docker push   ilyes/worker
+      - docker push   ilyeselayeb/client
+      - docker push   ilyeselayeb/nginx
+      - docker push   ilyeselayeb/server
+      - docker push   ilyeselayeb/worker
 
 
 
