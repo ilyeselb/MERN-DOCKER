@@ -14,3 +14,12 @@ services :
       - docker build -t ilyes/server -f ./server
       - docker build -t ilyes/worker -f ./worker
  
+      - echo "$DOCKER_PASSWORD" | login -u "$DOCKER_ID" --passord-stdin
+
+      - docker push   ilyes/client
+      - docker push   ilyes/nginx
+      - docker push   ilyes/server
+      - docker push   ilyes/worker
+
+
+
