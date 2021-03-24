@@ -1,14 +1,14 @@
 sudo : required
 services :
-  -docker:
+  -docker
 
-    before_install : 
+before_install : 
       - docker build -t ilyes/testclient -f ./client/Dockerfile.dev
 
-    script:
+script:
       - docker run ilyes/testclient npm test -- --coverage
     
-    after_sucees: 
+after_sucees: 
       - docker build -t ilyes/client -f ./client
       - docker build -t ilyes/nginx -f ./nginx
       - docker build -t ilyes/server -f ./server
